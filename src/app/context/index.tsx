@@ -14,10 +14,12 @@ import Header from "@/components/Header";
 
 interface AuthContextType {
   user: any;
+  setUser : (user: any) => void;
 }
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
+  setUser: () => {}
 });
 
 export const AuthContextProvider = ({
@@ -48,8 +50,10 @@ export const AuthContextProvider = ({
   }, []);
 
   const value = useMemo(() => {
+    console.log('reset user value')
     return {
       user,
+      setUser
     };
   }, [user]);
 
@@ -62,6 +66,6 @@ export const AuthContextProvider = ({
 };
 
 export const useAuthContext = () => {
-  const { user } = useContext(AuthContext);
-  return { user };
+  const { user, setUser } = useContext(AuthContext);
+  return { user, setUser };
 };

@@ -20,6 +20,7 @@ import { Event } from "@/types";
 import { LoadingButton } from "@mui/lab";
 import supabase from "../../supabase";
 import { useAuthContext } from "@/app/context";
+import config from '../../config'
 
 type Props = {
   setEvents: React.Dispatch<React.SetStateAction<Event[]>>;
@@ -68,8 +69,11 @@ export default function Form({ setEvents, setOpen }: Props) {
       const newEvent = { ...event, user_id: user?.id }; // Ajout de l'opérateur de faculté
       const { data, error } = await supabase
         .from<Event>("events")
-        .insert(newEvent); // Ajout du type générique Event
+        .insert(newEvent)
+        .select() // Ajout du type générique Event
+        console.log({data})
       if (data) {
+        console.log('set the events')
         setEvents((prevEvents) => [...prevEvents, newEvent]);
         setOpen(false);
       }
