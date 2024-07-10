@@ -1,3 +1,5 @@
+This project was inspired by a tutorial by Guillaume. You can watch it [here]([url](https://www.youtube.com/watch?v=kDGovtwtcyU&ab_channel=Codewithguillaume))
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
